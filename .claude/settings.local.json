@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Read(//usr/local/**)",
+      "Read(//Users/c.miranda/.nvm/**)",
+      "Bash(find /Users/c.miranda -name \"npm\" -type f 2>/dev/null | head -5; find /opt /usr/local /usr/bin -name \"npm\" 2>/dev/null | head -5)",
+      "Read(//Users/c.miranda/**)",
+      "Read(//opt/**)",
+      "Bash(brew install *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(xxd \"/private/tmp/claude-501/-Users-c-miranda-Desktop-website/845c6b4b-a9e6-415f-b505-704da7a5136c/tasks/byppf0n0v.output\")",
+      "Bash(gh auth *)",
+      "Bash(git -C /Users/c.miranda/Desktop/website remote -v)",
+      "Bash(git add *)"
+    ]
+  }
+}

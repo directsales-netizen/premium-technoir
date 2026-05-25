@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation Society Wave — Premium TechNoir</title>
+  <meta name="description" content="The premier community for AI automation practitioners. Powered by Premium TechNoir." />
+  <link rel="canonical" href="https://www.premiumtechnoir.net" />
+  <meta property="og:url" content="https://www.premiumtechnoir.net" />
+  <meta property="og:site_name" content="Premium TechNoir" />
+  <meta property="og:title" content="AI Automation Society Wave — Premium TechNoir" />
+  <meta property="og:description" content="The premier community for AI automation practitioners. Powered by Premium TechNoir." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Automation Society Wave — Premium TechNoir" />
+  <meta name="twitter:description" content="The premier community for AI automation practitioners. Powered by Premium TechNoir." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tn: {
+              cyan:      '#22D3EE',
+              cyanLight: '#67E8F9',
+              cyanDim:   '#0891B2',
+              blue:      '#3B82F6',
+              blueLight: '#60A5FA',
+              carbon:    '#0B0D10',
+              graphite:  '#14181F',
+              graphiteMid:'#1C2230',
+              steel:     '#2A2F3A',
+              soft:      '#E6E8EC',
+            }
+          },
+          fontFamily: {
+            display: ['Sora', 'Inter Tight', 'system-ui', 'sans-serif'],
+            tight:   ['Inter Tight', 'system-ui', 'sans-serif'],
+            body:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            tighter2: '-0.04em',
+            tighter3: '-0.03em',
+          },
+          lineHeight: {
+            body: '1.72',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: #0B0D10;
+      color: #E6E8EC;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: rgba(34,211,238,.2); color: #fff; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0B0D10; }
+    ::-webkit-scrollbar-thumb { background: #2A2F3A; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #22D3EE; }
+
+    /* ── Noise texture overlay ────────────────────────────────── */
+    .noise::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      opacity: .028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Text gradient ────────────────────────────────────────── */
+    .text-grad {
+      background: linear-gradient(125deg, #22D3EE 0%, #3B82F6 55%, #67E8F9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-grad-sm {
+      background: linear-gradient(110deg, #22D3EE, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Glass surface ────────────────────────────────────────── */
+    .glass {
+      background: rgba(34,211,238,.03);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(34,211,238,.09);
+    }
+    .glass-elevated {
+      background: rgba(20,24,31,.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(34,211,238,.11);
+    }
+    .glass-floating {
+      background: rgba(11,13,16,.93);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(34,211,238,.16);
+    }
+
+    /* ── Gradient border (featured card) ─────────────────────── */
+    .border-grad {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(#14181F, #14181F) padding-box,
+        linear-gradient(135deg, rgba(34,211,238,.6), rgba(59,130,246,.45), rgba(103,232,249,.3)) border-box;
+    }
+
+    /* ── Layered shadows ──────────────────────────────────────── */
+    .shadow-teal {
+      box-shadow:
+        0 0 0 1px rgba(34,211,238,.07),
+        0 4px 16px rgba(34,211,238,.07),
+        0 16px 48px rgba(0,0,0,.55);
+    }
+    .shadow-teal-glow {
+      box-shadow:
+        0 0 0 1px rgba(34,211,238,.22),
+        0 0 28px rgba(34,211,238,.22),
+        0 8px 40px rgba(59,130,246,.12),
+        0 24px 64px rgba(0,0,0,.75);
+    }
+    .shadow-card {
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.04) inset,
+        0 4px 20px rgba(0,0,0,.4),
+        0 1px 4px rgba(0,0,0,.3);
+    }
+
+    /* ── Nav link underline ───────────────────────────────────── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: linear-gradient(90deg, #22D3EE, #3B82F6);
+      transition: width .3s cubic-bezier(.4,0,.2,1);
+    }
+    .nav-link:hover::after, .nav-link:focus-visible::after { width: 100%; }
+    .nav-link:focus-visible { outline: 2px solid rgba(34,211,238,.5); outline-offset: 3px; border-radius: 2px; }
+
+    /* ── CTA buttons ──────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .875rem 1.75rem;
+      background: linear-gradient(130deg, #3B82F6 0%, #22D3EE 100%);
+      color: #0B0D10;
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .9375rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      border-radius: .5rem;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease, filter .2s ease;
+      box-shadow: 0 0 0 0 rgba(59,130,246,0), 0 4px 24px rgba(34,211,238,.2);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 0 24px rgba(34,211,238,.3), 0 8px 32px rgba(59,130,246,.15);
+    }
+    .btn-primary:active { transform: translateY(0); filter: brightness(.96); }
+    .btn-primary:focus-visible { outline: 2px solid #22D3EE; outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .875rem 1.5rem;
+      background: transparent;
+      color: rgba(230,232,236,.7);
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: .9375rem;
+      letter-spacing: .02em;
+      border-radius: .5rem;
+      border: 1px solid rgba(255,255,255,.09);
+      cursor: pointer;
+      transition: color .2s ease, border-color .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1), background .2s ease;
+    }
+    .btn-ghost:hover {
+      color: #fff;
+      border-color: rgba(34,211,238,.3);
+      background: rgba(34,211,238,.05);
+      transform: translateY(-2px);
+    }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid rgba(34,211,238,.5); outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      background: transparent;
+      color: rgba(230,232,236,.5);
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: .875rem;
+      border-radius: .5rem;
+      border: 1px solid rgba(255,255,255,.07);
+      cursor: pointer;
+      transition: color .2s ease, border-color .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .btn-outline:hover {
+      color: #fff;
+      border-color: rgba(34,211,238,.25);
+      transform: translateY(-1px);
+    }
+    .btn-outline:active { transform: translateY(0); }
+    .btn-outline:focus-visible { outline: 2px solid rgba(34,211,238,.5); outline-offset: 3px; }
+
+    .btn-colorful {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      height: 2.5rem;
+      padding: 0 1rem;
+      overflow: hidden;
+      background: #14181F;
+      color: #fff;
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: .9375rem;
+      border-radius: .5rem;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .btn-colorful::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #3B82F6, #8B5CF6, #22D3EE);
+      opacity: .4;
+      filter: blur(6px);
+      transition: opacity .5s ease;
+    }
+    .btn-colorful:hover::before { opacity: .85; }
+    .btn-colorful:hover { transform: translateY(-2px); }
+    .btn-colorful:active { transform: translateY(0); }
+    .btn-colorful:focus-visible { outline: 2px solid #22D3EE; outline-offset: 3px; }
+    .btn-colorful .btn-colorful-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      z-index: 1;
+    }
+
+    /* ── Scroll-reveal animation ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(.88);
+      transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.34,1.56,.64,1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    .reveal-blur {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(16px);
+      transition: opacity .7s ease, filter .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-blur.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+    .reveal-delay-6 { transition-delay: .6s; }
+
+    /* ── Counter animation ────────────────────────────────────── */
+    .count-up { display: inline-block; }
+
+    /* ── Parallax blobs ───────────────────────────────────────── */
+    .parallax-blob { will-change: transform; }
+
+    /* ── Sparkles canvas ─────────────────────────────────────── */
+    #sparkle-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* ── Wave SVG divider ─────────────────────────────────────── */
+    .wave-divider { line-height: 0; }
+
+    /* ── Grid overlay ─────────────────────────────────────────── */
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(34,211,238,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    /* ── Stat card number ─────────────────────────────────────── */
+    .stat-num {
+      font-family: 'Sora', 'Inter Tight', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+
+    /* ── Pricing card ─────────────────────────────────────────── */
+    .pricing-card { transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+    .pricing-card:hover { transform: translateY(-4px); }
+
+    /* ── Event row ────────────────────────────────────────────── */
+    .event-row {
+      transition: background .2s ease, border-color .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .event-row:hover {
+      background: rgba(20,24,31,.85);
+      border-color: rgba(34,211,238,.2);
+      transform: translateX(4px);
+    }
+
+    /* ── Feature card ─────────────────────────────────────────── */
+    .feature-card {
+      transition: border-color .3s ease, box-shadow .3s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    .feature-card:hover {
+      border-color: rgba(34,211,238,.25);
+      box-shadow: 0 0 32px rgba(34,211,238,.07), 0 8px 40px rgba(0,0,0,.55);
+      transform: translateY(-3px);
+    }
+
+    /* ── Use case card ────────────────────────────────────────── */
+    .use-card {
+      transition: border-color .25s ease, background .25s ease, transform .2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .use-card:hover {
+      border-color: rgba(34,211,238,.2);
+      background: rgba(20,24,31,.85);
+      transform: translateY(-2px);
+    }
+
+    /* ── Testimonial card ─────────────────────────────────────── */
+    .testi-card {
+      transition: border-color .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    .testi-card:hover {
+      border-color: rgba(34,211,238,.18);
+      transform: translateY(-3px);
+    }
+
+    /* ── Footer link ─────────────────────────────────────────── */
+    .footer-link {
+      color: rgba(255,255,255,.28);
+      transition: color .2s ease;
+    }
+    .footer-link:hover { color: #22D3EE; }
+    .footer-link:focus-visible { outline: 2px solid rgba(34,211,238,.4); outline-offset: 2px; border-radius: 2px; }
+
+    /* ── Radial glow blobs (decorative) ──────────────────────── */
+    .glow-blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* ── Navbar scroll transition ─────────────────────────────── */
+    #nav {
+      transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    #nav.scrolled {
+      background: rgba(11,13,16,.95);
+      border-bottom: 1px solid rgba(34,211,238,.08);
+      box-shadow: 0 4px 24px rgba(0,0,0,.5);
+    }
+
+    /* ── Dashboard mockup ─────────────────────────────────────── */
+    .mock-row {
+      transition: background .15s ease;
+    }
+    .mock-row:hover { background: rgba(255,255,255,.04); }
+
+    /* ── 3D scroll card ───────────────────────────────────────── */
+    #scroll-card {
+      transform-style: preserve-3d;
+      transform: perspective(1200px) rotateX(18deg) scale(.97);
+      transition: transform .6s cubic-bezier(.22,1,.36,1);
+    }
+    #scroll-card.flat {
+      transform: perspective(1200px) rotateX(0deg) scale(1);
+    }
+
+    /* ── Badge pill ───────────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      padding: .3rem .875rem;
+      border-radius: 4px;
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(34,211,238,.22);
+      background: rgba(34,211,238,.06);
+      color: #67E8F9;
+    }
+    .badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #22D3EE;
+      box-shadow: 0 0 6px #22D3EE;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:.6; transform:scale(.8); }
+    }
+
+    /* ── Avatar ring stack ───────────────────────────────────── */
+    .avatar-ring {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 2px solid #0B0D10;
+      margin-left: -8px;
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-size: .625rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0B0D10;
+    }
+
+    /* ── Checkmark icon ──────────────────────────────────────── */
+    .check-icon {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      border-radius: 3px;
+      background: rgba(34,211,238,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+  </style>
+</head>
+
+<body class="noise">
+
+<!-- ══════════════════ SPARKLE CANVAS ══════════════════ -->
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.6;"></canvas>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50" style="backdrop-filter:blur(0px);">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-[66px] flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 group" style="text-decoration:none;">
+      <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#67E8F9"/>
+            <stop offset="100%" stop-color="#22D3EE"/>
+          </linearGradient>
+          <linearGradient id="wg" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1D4ED8"/>
+            <stop offset="100%" stop-color="#3B82F6"/>
+          </linearGradient>
+        </defs>
+        <path d="M20 3 L35 11 L35 27 L20 37 L5 27 L5 11 Z" fill="none" stroke="url(#sg)" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M20 9 L29 14 L29 24 L20 31 L11 24 L11 14 Z" fill="none" stroke="url(#sg)" stroke-width="1.2" stroke-linejoin="round" opacity="0.45"/>
+        <path d="M4 22 Q11 13 20 20 Q29 27 36 17" stroke="url(#wg)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div style="line-height:1;">
+        <div class="font-display font-bold text-white" style="font-size:.9rem;letter-spacing:-.01em;">
+          Premium <span class="text-grad-sm">TechNoir</span>
+        </div>
+        <div style="font-family:'Inter Tight','Inter',sans-serif;font-size:.58rem;color:rgba(255,255,255,.22);letter-spacing:.18em;text-transform:uppercase;margin-top:1px;">
+          AI Automation Society Wave
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-9">
+      <a href="#about" class="nav-link font-body text-sm" style="color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='rgba(255,255,255,.9)'" onmouseout="this.style.color='rgba(255,255,255,.5)'">About</a>
+      <a href="#community" class="nav-link font-body text-sm" style="color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='rgba(255,255,255,.9)'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Community</a>
+      <a href="#events" class="nav-link font-body text-sm" style="color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='rgba(255,255,255,.9)'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Events</a>
+      <a href="#join" class="nav-link font-body text-sm" style="color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='rgba(255,255,255,.9)'" onmouseout="this.style.color='rgba(255,255,255,.5)'">Resources</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="#join" class="font-body text-sm" style="color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Sign in</a>
+      <a href="#join" class="btn-primary" style="text-decoration:none;">
+        Join the Wave
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden" aria-label="Open menu" style="color:rgba(255,255,255,.6);background:none;border:none;cursor:pointer;padding:4px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden glass-floating" style="border-top:1px solid rgba(34,211,238,.1);">
+    <div class="px-6 py-5 flex flex-col gap-4">
+      <a href="#about" class="font-body text-sm" style="color:rgba(255,255,255,.65);text-decoration:none;">About</a>
+      <a href="#community" class="font-body text-sm" style="color:rgba(255,255,255,.65);text-decoration:none;">Community</a>
+      <a href="#events" class="font-body text-sm" style="color:rgba(255,255,255,.65);text-decoration:none;">Events</a>
+      <a href="#join" class="font-body text-sm" style="color:rgba(255,255,255,.65);text-decoration:none;">Resources</a>
+      <a href="#join" class="btn-primary" style="text-decoration:none;justify-content:center;margin-top:4px;">
+        Join Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero" class="relative min-h-screen flex flex-col items-center justify-start overflow-hidden" style="padding-top:7rem;">
+
+  <!-- Decorative glow blobs -->
+  <div class="glow-blob" style="width:700px;height:500px;top:-80px;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(59,130,246,.09) 0%,rgba(34,211,238,.05) 40%,transparent 70%);"></div>
+  <div class="glow-blob" style="width:380px;height:380px;top:200px;left:8%;background:rgba(34,211,238,.04);"></div>
+  <div class="glow-blob" style="width:300px;height:300px;top:300px;right:6%;background:rgba(59,130,246,.05);"></div>
+
+  <!-- Grid overlay -->
+  <div class="grid-overlay absolute inset-0 pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center w-full">
+    <!-- Badge -->
+    <div class="reveal flex justify-center mb-8">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Powered by Premium TechNoir · Community Open
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="reveal reveal-delay-1 font-display text-white" style="font-size:clamp(3rem,7vw,5.25rem);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:1.5rem;">
+      Ride the Wave of<br/>
+      <span class="text-grad">AI Automation</span>
+    </h1>
+
+    <!-- Subhead -->
+    <p class="reveal reveal-delay-2 font-body mx-auto" style="font-size:1.125rem;line-height:1.72;color:rgba(230,232,236,.42);max-width:540px;margin-bottom:2.5rem;">
+      A controlled environment for AI automation practitioners. Precision-built workflows. Verified methods. Quiet expertise — powered by Premium TechNoir.
+    </p>
+
+    <!-- CTAs -->
+    <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+      <a href="#join" class="btn-primary" style="text-decoration:none;">
+        Join Free Today
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#about" class="btn-ghost" style="text-decoration:none;">
+        See how it works
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
+    </div>
+
+    <!-- Social proof -->
+    <div class="reveal reveal-delay-4 flex items-center justify-center gap-3 font-body" style="font-size:.875rem;color:rgba(255,255,255,.35);">
+      <div style="display:flex;margin-left:8px;">
+        <div class="avatar-ring" style="background:#22D3EE;margin-left:0;">A</div>
+        <div class="avatar-ring" style="background:#3B82F6;">B</div>
+        <div class="avatar-ring" style="background:#67E8F9;">C</div>
+        <div class="avatar-ring" style="background:#1D4ED8;">D</div>
+        <div class="avatar-ring" style="background:#0EA5E9;">E</div>
+      </div>
+      <span><strong style="color:rgba(255,255,255,.85);font-weight:700;">2,400+</strong> <span style="color:rgba(255,255,255,.5);">members already automating</span></span>
+    </div>
+  </div>
+
+  <!-- 3D Dashboard Card -->
+  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 mt-16" id="scroll-card-wrap">
+    <div class="text-center mb-6 reveal">
+      <p class="font-mono text-xs" style="color:rgba(34,211,238,.45);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem;">Community Dashboard</p>
+      <p class="font-display font-bold text-white" style="font-size:1.75rem;letter-spacing:-.03em;">Your automation hub, <span class="text-grad">reimagined</span></p>
+    </div>
+    <div id="scroll-card" class="rounded-3xl overflow-hidden shadow-teal-glow" style="border:3px solid rgba(108,108,108,.35);">
+      <div class="bg-[#14181F] rounded-[inherit] overflow-hidden" style="min-height:420px;">
+
+        <!-- Titlebar -->
+        <div class="flex items-center gap-2 px-5 py-3.5" style="background:#0B0D10;border-bottom:1px solid rgba(34,211,238,.06);">
+          <span style="width:11px;height:11px;border-radius:50%;background:rgba(239,68,68,.45);display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:rgba(234,179,8,.45);display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:rgba(34,211,238,.45);display:inline-block;"></span>
+          <div class="flex-1 flex justify-center">
+            <div class="font-mono text-xs rounded-md px-12 py-1" style="background:rgba(255,255,255,.04);color:rgba(255,255,255,.2);">aaswave.community/dashboard</div>
+          </div>
+        </div>
+
+        <!-- Dashboard body -->
+        <div class="flex" style="min-height:380px;">
+          <!-- Sidebar -->
+          <div class="flex flex-col gap-1 p-3" style="width:168px;flex-shrink:0;border-right:1px solid rgba(34,211,238,.06);background:#0B0D10;">
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="background:rgba(34,211,238,.1);color:#22D3EE;font-family:'Inter Tight','Inter',sans-serif;font-size:.62rem;font-weight:500;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Workflows
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="color:rgba(255,255,255,.22);font-family:'Inter Tight','Inter',sans-serif;font-size:.62rem;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg> Agents
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="color:rgba(255,255,255,.22);font-family:'Inter Tight','Inter',sans-serif;font-size:.62rem;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/></svg> Models
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="color:rgba(255,255,255,.22);font-family:'Inter Tight','Inter',sans-serif;font-size:.62rem;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="color:rgba(255,255,255,.22);font-family:'Inter Tight','Inter',sans-serif;font-size:.62rem;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Events
+            </div>
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg" style="color:rgba(255,255,255,.22);font-family:'Inter Tight','Inter',sans-serif;font-size:.62rem;">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Playground
+            </div>
+          </div>
+
+          <!-- Main area -->
+          <div class="flex-1 p-4 flex flex-col gap-3">
+            <!-- Stat cards -->
+            <div class="grid grid-cols-3 gap-3">
+              <div class="glass rounded-xl p-3">
+                <p class="font-mono" style="font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.22);margin-bottom:.25rem;">Active Workflows</p>
+                <p class="font-display font-bold" style="font-size:1.3rem;color:#22D3EE;letter-spacing:-.03em;">24</p>
+                <p class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.18);">+3 today</p>
+              </div>
+              <div class="glass rounded-xl p-3">
+                <p class="font-mono" style="font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.22);margin-bottom:.25rem;">Tasks Automated</p>
+                <p class="font-display font-bold" style="font-size:1.3rem;color:#60a5fa;letter-spacing:-.03em;">1,892</p>
+                <p class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.18);">this week</p>
+              </div>
+              <div class="glass rounded-xl p-3">
+                <p class="font-mono" style="font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.22);margin-bottom:.25rem;">Time Saved</p>
+                <p class="font-display font-bold" style="font-size:1.3rem;color:#38bdf8;letter-spacing:-.03em;">47h</p>
+                <p class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.18);">this month</p>
+              </div>
+            </div>
+
+            <!-- Workflow list -->
+            <div class="glass rounded-xl p-3 flex-1">
+              <div class="flex items-center justify-between mb-2.5">
+                <p class="font-mono" style="font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);font-weight:600;">Recent Workflows</p>
+                <span class="font-mono" style="font-size:.55rem;color:#22D3EE;">View all →</span>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <div class="mock-row flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,.015);">
+                  <span style="width:6px;height:6px;border-radius:50%;background:#22D3EE;flex-shrink:0;box-shadow:0 0 5px #22D3EE;"></span>
+                  <span class="font-body flex-1 truncate" style="font-size:.65rem;color:rgba(255,255,255,.5);">Lead Enrichment Pipeline</span>
+                  <span class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.2);">142 runs</span>
+                </div>
+                <div class="mock-row flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,.015);">
+                  <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);flex-shrink:0;"></span>
+                  <span class="font-body flex-1 truncate" style="font-size:.65rem;color:rgba(255,255,255,.5);">Content Repurpose Agent</span>
+                  <span class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.2);">87 runs</span>
+                </div>
+                <div class="mock-row flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,.015);">
+                  <span style="width:6px;height:6px;border-radius:50%;background:#22D3EE;flex-shrink:0;box-shadow:0 0 5px #22D3EE;"></span>
+                  <span class="font-body flex-1 truncate" style="font-size:.65rem;color:rgba(255,255,255,.5);">Invoice Auto-Processor</span>
+                  <span class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.2);">321 runs</span>
+                </div>
+                <div class="mock-row flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,.015);">
+                  <span style="width:6px;height:6px;border-radius:50%;background:#facc15;flex-shrink:0;"></span>
+                  <span class="font-body flex-1 truncate" style="font-size:.65rem;color:rgba(255,255,255,.5);">Support Ticket Router</span>
+                  <span class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.2);">56 runs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right panel -->
+          <div class="hidden lg:flex flex-col gap-3 p-3" style="width:164px;flex-shrink:0;border-left:1px solid rgba(34,211,238,.07);">
+            <div class="glass rounded-xl p-3">
+              <p class="font-mono mb-2" style="font-size:.55rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.28);">Live Activity</p>
+              <div class="flex flex-col gap-1.5">
+                <div class="flex gap-2 items-start">
+                  <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#22D3EE,#3B82F6);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#0B0D10;flex-shrink:0;font-family:'Sora','Inter Tight',sans-serif;">A</div>
+                  <div><p class="font-body" style="font-size:.6rem;color:rgba(255,255,255,.45);font-weight:500;">Alex K.</p><p class="font-mono" style="font-size:.5rem;color:rgba(255,255,255,.2);">deployed workflow</p></div>
+                </div>
+                <div class="flex gap-2 items-start">
+                  <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#67E8F9);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#0B0D10;flex-shrink:0;font-family:'Sora','Inter Tight',sans-serif;">S</div>
+                  <div><p class="font-body" style="font-size:.6rem;color:rgba(255,255,255,.45);font-weight:500;">Sam R.</p><p class="font-mono" style="font-size:.5rem;color:rgba(255,255,255,.2);">joined community</p></div>
+                </div>
+                <div class="flex gap-2 items-start">
+                  <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#67E8F9,#22D3EE);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#0B0D10;flex-shrink:0;font-family:'Sora','Inter Tight',sans-serif;">M</div>
+                  <div><p class="font-body" style="font-size:.6rem;color:rgba(255,255,255,.45);font-weight:500;">Mia L.</p><p class="font-mono" style="font-size:.5rem;color:rgba(255,255,255,.2);">shared template</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="glass rounded-xl p-3">
+              <p class="font-body font-semibold mb-1" style="font-size:.65rem;color:#22D3EE;">Next Event</p>
+              <p class="font-body" style="font-size:.62rem;color:rgba(255,255,255,.5);line-height:1.4;">AI Agents Deep Dive</p>
+              <p class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.25);margin-top:.2rem;">Thu · 7PM EST</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════ WAVE DIVIDER ══════════════════ -->
+<div class="wave-divider" style="margin-top:-2px;">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="display:block;width:100%;height:56px;">
+    <path d="M0,28 C240,56 480,0 720,28 C960,56 1200,0 1440,28 L1440,56 L0,56 Z" fill="rgba(34,211,238,.05)"/>
+    <path d="M0,38 C360,14 720,56 1080,28 C1260,14 1380,42 1440,38 L1440,56 L0,56 Z" fill="rgba(34,211,238,.035)"/>
+    <defs>
+      <linearGradient id="waveGrad1" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#22D3EE" stop-opacity=".6"/>
+        <stop offset="50%" stop-color="#67E8F9" stop-opacity=".6"/>
+        <stop offset="100%" stop-color="#22D3EE" stop-opacity=".6"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,32 C240,56 480,8 720,32 C960,56 1200,8 1440,32" stroke="url(#waveGrad1)" stroke-width="1" fill="none" opacity=".4"/>
+  </svg>
+</div>
+
+<!-- ══════════════════ STATS ══════════════════ -->
+<section style="padding:5rem 0;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden" style="background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.1);">
+      <div class="flex flex-col items-center py-10 px-6 text-center" style="border-right:1px solid rgba(34,211,238,.08);border-bottom:1px solid rgba(34,211,238,.08);background:#14181F;transition:background .2s ease;" onmouseover="this.style.background='#14181F'" onmouseout="this.style.background='#14181F'">
+        <div class="mb-3 p-2.5 rounded-xl" style="background:rgba(34,211,238,.1);color:#22D3EE;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p class="stat-num text-grad">2,400+</p>
+        <p class="font-body text-sm" style="color:rgba(255,255,255,.35);margin-top:.375rem;">Active Members</p>
+      </div>
+      <div class="flex flex-col items-center py-10 px-6 text-center" style="border-right:1px solid rgba(34,211,238,.08);border-bottom:1px solid rgba(34,211,238,.08);background:#14181F;transition:background .2s ease;" onmouseover="this.style.background='#14181F'" onmouseout="this.style.background='#14181F'">
+        <div class="mb-3 p-2.5 rounded-xl" style="background:rgba(96,165,250,.1);color:#60a5fa;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <p class="stat-num" style="background:linear-gradient(135deg,#60a5fa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">42</p>
+        <p class="font-body text-sm" style="color:rgba(255,255,255,.35);margin-top:.375rem;">Countries</p>
+      </div>
+      <div class="flex flex-col items-center py-10 px-6 text-center" style="border-right:1px solid rgba(34,211,238,.08);background:#14181F;transition:background .2s ease;" onmouseover="this.style.background='#14181F'" onmouseout="this.style.background='#14181F'">
+        <div class="mb-3 p-2.5 rounded-xl" style="background:rgba(34,211,238,.1);color:#22D3EE;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <p class="stat-num text-grad">180+</p>
+        <p class="font-body text-sm" style="color:rgba(255,255,255,.35);margin-top:.375rem;">Templates Shared</p>
+      </div>
+      <div class="flex flex-col items-center py-10 px-6 text-center" style="background:#14181F;transition:background .2s ease;" onmouseover="this.style.background='#14181F'" onmouseout="this.style.background='#14181F'">
+        <div class="mb-3 p-2.5 rounded-xl" style="background:rgba(56,189,248,.1);color:#38bdf8;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <p class="stat-num" style="background:linear-gradient(135deg,#38bdf8,#67E8F9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">12+</p>
+        <p class="font-body text-sm" style="color:rgba(255,255,255,.35);margin-top:.375rem;">Events / Month</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT / FEATURES ══════════════════ -->
+<section id="about" style="padding:5rem 0;position:relative;">
+  <div class="glow-blob" style="width:400px;height:400px;right:-80px;top:50%;transform:translateY(-50%);background:rgba(34,211,238,.05);"></div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="reveal-blur font-mono text-xs" style="color:#22D3EE;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;">What We Offer</p>
+      <h2 class="reveal reveal-delay-1 font-display font-bold text-white" style="font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-.04em;line-height:1.08;margin-bottom:1.25rem;">
+        Everything you need to<br/><span class="text-grad">automate at scale</span>
+      </h2>
+      <p class="reveal reveal-delay-2 font-body mx-auto" style="font-size:1.0625rem;line-height:1.72;color:rgba(255,255,255,.38);max-width:520px;">
+        AASW — powered by Premium TechNoir — is built by practitioners, for practitioners. We cut through the noise so you can focus on building.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="reveal-left feature-card glass-elevated rounded-2xl p-7 shadow-card" style="cursor:default;">
+        <div class="mb-5 p-3 rounded-xl inline-flex" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-white mb-3" style="font-size:1.125rem;letter-spacing:-.02em;">Learn from Practitioners</h3>
+        <p class="font-body" style="font-size:.9rem;line-height:1.72;color:rgba(255,255,255,.38);">Access deep-dive workshops, case studies, and live sessions led by people actually building production AI systems — not just theorists.</p>
+      </div>
+      <div class="reveal reveal-delay-1 feature-card glass-elevated rounded-2xl p-7 shadow-card" style="cursor:default;">
+        <div class="mb-5 p-3 rounded-xl inline-flex" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#60a5fa;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h7v7h-7z" stroke-dasharray="2 2"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-white mb-3" style="font-size:1.125rem;letter-spacing:-.02em;">Build Faster</h3>
+        <p class="font-body" style="font-size:.9rem;line-height:1.72;color:rgba(255,255,255,.38);">A growing library of battle-tested automation templates, agent blueprints, and integration patterns ready to deploy in minutes.</p>
+      </div>
+      <div class="reveal-right reveal-delay-2 feature-card glass-elevated rounded-2xl p-7 shadow-card" style="cursor:default;">
+        <div class="mb-5 p-3 rounded-xl inline-flex" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#38bdf8;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-white mb-3" style="font-size:1.125rem;letter-spacing:-.02em;">Connect &amp; Collaborate</h3>
+        <p class="font-body" style="font-size:.9rem;line-height:1.72;color:rgba(255,255,255,.38);">Find co-builders, get feedback, discover opportunities, and form teams with people who share your vision for an automated future.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ USE CASES ══════════════════ -->
+<section id="community" style="padding:5rem 0;position:relative;">
+  <div class="glow-blob" style="width:380px;height:380px;left:-60px;top:40%;background:rgba(34,211,238,.05);"></div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="reveal-blur font-mono text-xs" style="color:#67E8F9;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;">Use Cases</p>
+      <h2 class="reveal reveal-delay-1 font-display font-bold text-white" style="font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-.04em;line-height:1.08;margin-bottom:1.25rem;">Built for every <span class="text-grad">industry</span></h2>
+      <p class="reveal reveal-delay-2 font-body mx-auto" style="font-size:1.0625rem;line-height:1.72;color:rgba(255,255,255,.38);max-width:480px;">Members across every vertical are deploying automation that drives real, measurable outcomes.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Row 1 -->
+      <div class="reveal-scale use-card glass rounded-xl p-6" style="cursor:default;">
+        <div class="flex items-start gap-4">
+          <div class="p-2.5 rounded-lg flex-shrink-0" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div>
+            <span class="font-mono inline-block mb-2" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(34,211,238,.6);background:rgba(34,211,238,.08);padding:.2rem .625rem;border-radius:999px;">Sales</span>
+            <h3 class="font-display font-semibold text-white mb-1.5" style="font-size:.9rem;letter-spacing:-.01em;">Lead Intelligence Pipelines</h3>
+            <p class="font-body" style="font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.33);">Enrich, score, and route leads automatically using AI agents that work while you sleep.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-scale reveal-delay-2 use-card glass rounded-xl p-6" style="cursor:default;">
+        <div class="flex items-start gap-4">
+          <div class="p-2.5 rounded-lg flex-shrink-0" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <div>
+            <span class="font-mono inline-block mb-2" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(34,211,238,.6);background:rgba(34,211,238,.08);padding:.2rem .625rem;border-radius:999px;">Operations</span>
+            <h3 class="font-display font-semibold text-white mb-1.5" style="font-size:.9rem;letter-spacing:-.01em;">Document Automation</h3>
+            <p class="font-body" style="font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.33);">Extract, transform, and route data from any document type — invoices, contracts, reports.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-scale reveal-delay-4 use-card glass rounded-xl p-6" style="cursor:default;">
+        <div class="flex items-start gap-4">
+          <div class="p-2.5 rounded-lg flex-shrink-0" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <span class="font-mono inline-block mb-2" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(34,211,238,.6);background:rgba(34,211,238,.08);padding:.2rem .625rem;border-radius:999px;">Marketing</span>
+            <h3 class="font-display font-semibold text-white mb-1.5" style="font-size:.9rem;letter-spacing:-.01em;">Content at Scale</h3>
+            <p class="font-body" style="font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.33);">Repurpose content across formats and channels with multi-step AI workflows.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="reveal-scale use-card glass rounded-xl p-6" style="cursor:default;">
+        <div class="flex items-start gap-4">
+          <div class="p-2.5 rounded-lg flex-shrink-0" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <span class="font-mono inline-block mb-2" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(34,211,238,.6);background:rgba(34,211,238,.08);padding:.2rem .625rem;border-radius:999px;">Support</span>
+            <h3 class="font-display font-semibold text-white mb-1.5" style="font-size:.9rem;letter-spacing:-.01em;">Intelligent Routing</h3>
+            <p class="font-body" style="font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.33);">Classify, prioritize, and resolve support tickets using LLM-powered decision trees.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-scale reveal-delay-2 use-card glass rounded-xl p-6" style="cursor:default;">
+        <div class="flex items-start gap-4">
+          <div class="p-2.5 rounded-lg flex-shrink-0" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div>
+            <span class="font-mono inline-block mb-2" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(34,211,238,.6);background:rgba(34,211,238,.08);padding:.2rem .625rem;border-radius:999px;">DevOps</span>
+            <h3 class="font-display font-semibold text-white mb-1.5" style="font-size:.9rem;letter-spacing:-.01em;">Code Review Agents</h3>
+            <p class="font-body" style="font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.33);">Automated PR reviews, test generation, and documentation from your CI/CD pipeline.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-scale reveal-delay-4 use-card glass rounded-xl p-6" style="cursor:default;">
+        <div class="flex items-start gap-4">
+          <div class="p-2.5 rounded-lg flex-shrink-0" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#22D3EE;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <span class="font-mono inline-block mb-2" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(34,211,238,.6);background:rgba(34,211,238,.08);padding:.2rem .625rem;border-radius:999px;">Security</span>
+            <h3 class="font-display font-semibold text-white mb-1.5" style="font-size:.9rem;letter-spacing:-.01em;">Compliance Monitoring</h3>
+            <p class="font-body" style="font-size:.8rem;line-height:1.65;color:rgba(255,255,255,.33);">Continuous automated scanning and reporting to keep you ahead of compliance obligations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave divider 2 -->
+<div class="wave-divider" style="transform:scaleX(-1);">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="display:block;width:100%;height:48px;">
+    <path d="M0,24 C360,48 720,0 1080,24 C1260,36 1380,14 1440,24 L1440,48 L0,48 Z" fill="rgba(34,211,238,.04)"/>
+    <path d="M0,24 C240,0 480,48 720,24 C960,0 1200,48 1440,24" stroke="rgba(34,211,238,.2)" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+<section style="padding:5rem 0;position:relative;">
+  <div class="glow-blob" style="width:500px;height:300px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(34,211,238,.05),transparent 70%);"></div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="reveal-blur font-mono text-xs" style="color:#22D3EE;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;">Testimonials</p>
+      <h2 class="reveal reveal-delay-1 font-display font-bold text-white" style="font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-.04em;line-height:1.08;">Hear from the <span class="text-grad">wave riders</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="reveal-left testi-card glass-elevated rounded-2xl p-7 shadow-card" style="position:relative;cursor:default;">
+        <div style="position:absolute;top:0;left:1.75rem;right:1.75rem;height:1px;background:linear-gradient(90deg,#22D3EE,#3B82F6);"></div>
+        <div class="flex gap-1 mb-5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="font-body mb-6" style="font-size:.9rem;line-height:1.72;color:rgba(255,255,255,.5);font-style:italic;">&ldquo;AASW completely changed how I approach automation. The community knowledge alone is worth more than any paid course I've taken.&rdquo;</p>
+        <div class="flex items-center gap-3">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#22D3EE,#3B82F6);display:flex;align-items:center;justify-content:center;font-family:'Sora','Inter Tight',sans-serif;font-size:.875rem;font-weight:700;color:#0B0D10;">P</div>
+          <div><p class="font-body font-semibold text-white" style="font-size:.875rem;">Priya S.</p><p class="font-body" style="font-size:.75rem;color:rgba(255,255,255,.3);">Head of Ops, Series B SaaS</p></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2 testi-card glass-elevated rounded-2xl p-7 shadow-card" style="position:relative;cursor:default;">
+        <div style="position:absolute;top:0;left:1.75rem;right:1.75rem;height:1px;background:linear-gradient(90deg,#3B82F6,#67E8F9);opacity:1;"></div>
+        <div class="flex gap-1 mb-5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="font-body mb-6" style="font-size:.9rem;line-height:1.72;color:rgba(255,255,255,.5);font-style:italic;">&ldquo;Within two weeks of joining I had deployed three production workflows that saved my team 20+ hours a week. The templates are insane.&rdquo;</p>
+        <div class="flex items-center gap-3">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#67E8F9);display:flex;align-items:center;justify-content:center;font-family:'Sora','Inter Tight',sans-serif;font-size:.875rem;font-weight:700;color:#0B0D10;">M</div>
+          <div><p class="font-body font-semibold text-white" style="font-size:.875rem;">Marcus W.</p><p class="font-body" style="font-size:.75rem;color:rgba(255,255,255,.3);">Founder, AI Consulting Agency</p></div>
+        </div>
+      </div>
+      <div class="reveal-right reveal-delay-3 testi-card glass-elevated rounded-2xl p-7 shadow-card" style="position:relative;cursor:default;">
+        <div style="position:absolute;top:0;left:1.75rem;right:1.75rem;height:1px;background:linear-gradient(90deg,#67E8F9,#22D3EE);"></div>
+        <div class="flex gap-1 mb-5">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#22D3EE" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="font-body mb-6" style="font-size:.9rem;line-height:1.72;color:rgba(255,255,255,.5);font-style:italic;">&ldquo;I came in skeptical, left with co-founders. The caliber of people here is unlike any other tech community I've been part of.&rdquo;</p>
+        <div class="flex items-center gap-3">
+          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#67E8F9,#22D3EE);display:flex;align-items:center;justify-content:center;font-family:'Sora','Inter Tight',sans-serif;font-size:.875rem;font-weight:700;color:#0B0D10;">E</div>
+          <div><p class="font-body font-semibold text-white" style="font-size:.875rem;">Elif D.</p><p class="font-body" style="font-size:.75rem;color:rgba(255,255,255,.3);">ML Engineer, Enterprise FinTech</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wave divider 3 -->
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="display:block;width:100%;height:48px;">
+    <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="rgba(34,211,238,.04)"/>
+    <path d="M0,28 C360,8 720,48 1080,24" stroke="rgba(34,211,238,.18)" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<!-- ══════════════════ EVENTS ══════════════════ -->
+<section id="events" style="padding:5rem 0;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div>
+        <p class="reveal-blur font-mono text-xs" style="color:#22D3EE;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;">Upcoming Events</p>
+        <h2 class="reveal reveal-delay-1 font-display font-bold text-white" style="font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-.04em;line-height:1.08;">Learn live with the <span class="text-grad">community</span></h2>
+      </div>
+      <a href="#" class="reveal font-body text-sm flex items-center gap-1.5" style="color:rgba(255,255,255,.35);text-decoration:none;white-space:nowrap;transition:color .2s ease;" onmouseover="this.style.color='rgba(255,255,255,.7)'" onmouseout="this.style.color='rgba(255,255,255,.35)'">
+        View all events
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+    <div class="flex flex-col gap-4">
+      <!-- Event 1 -->
+      <div class="reveal event-row glass-elevated rounded-2xl p-6 flex items-center gap-6" style="cursor:pointer;">
+        <div class="flex-shrink-0 w-16 text-center rounded-xl py-3" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.2);">
+          <p class="font-display font-bold" style="font-size:1.5rem;color:#22D3EE;letter-spacing:-.04em;line-height:1;">22</p>
+          <p class="font-mono" style="font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-top:2px;">MAY</p>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-mono inline-block mb-1" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);background:rgba(255,255,255,.05);padding:.15rem .5rem;border-radius:999px;">Workshop</span>
+          <h3 class="font-display font-semibold text-white" style="font-size:1rem;letter-spacing:-.02em;transition:color .2s ease;">AI Agents Deep Dive</h3>
+          <p class="font-body" style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:.2rem;">7:00 PM EST · 84 attending</p>
+        </div>
+        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style="border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.25);transition:color .2s ease,border-color .2s ease;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="reveal reveal-delay-1 event-row glass-elevated rounded-2xl p-6 flex items-center gap-6" style="cursor:pointer;">
+        <div class="flex-shrink-0 w-16 text-center rounded-xl py-3" style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.18);">
+          <p class="font-display font-bold" style="font-size:1.5rem;color:#60a5fa;letter-spacing:-.04em;line-height:1;">29</p>
+          <p class="font-mono" style="font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-top:2px;">MAY</p>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-mono inline-block mb-1" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);background:rgba(255,255,255,.05);padding:.15rem .5rem;border-radius:999px;">Live Session</span>
+          <h3 class="font-display font-semibold text-white" style="font-size:1rem;letter-spacing:-.02em;">Build in Public: Live Automation Sprint</h3>
+          <p class="font-body" style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:.2rem;">6:00 PM EST · 112 attending</p>
+        </div>
+        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style="border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.25);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="reveal reveal-delay-2 event-row glass-elevated rounded-2xl p-6 flex items-center gap-6" style="cursor:pointer;">
+        <div class="flex-shrink-0 w-16 text-center rounded-xl py-3" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.18);">
+          <p class="font-display font-bold" style="font-size:1.5rem;color:#38bdf8;letter-spacing:-.04em;line-height:1;">05</p>
+          <p class="font-mono" style="font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-top:2px;">JUN</p>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-mono inline-block mb-1" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);background:rgba(255,255,255,.05);padding:.15rem .5rem;border-radius:999px;">Talk</span>
+          <h3 class="font-display font-semibold text-white" style="font-size:1rem;letter-spacing:-.02em;">LLM Orchestration Patterns</h3>
+          <p class="font-body" style="font-size:.8rem;color:rgba(255,255,255,.45);margin-top:.2rem;">8:00 PM EST · 67 attending</p>
+        </div>
+        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style="border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.25);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PRICING ══════════════════ -->
+<section id="join" style="padding:5rem 0 6rem;position:relative;">
+  <div class="glow-blob" style="width:700px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(34,211,238,.07) 0%,transparent 65%);"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <p class="reveal-blur font-mono text-xs" style="color:#22D3EE;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;">Membership</p>
+      <h2 class="reveal reveal-delay-1 font-display font-bold text-white" style="font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-.04em;line-height:1.08;margin-bottom:1.25rem;">Join <span class="text-grad">AI Automation Society Wave</span></h2>
+      <p class="reveal reveal-delay-2 font-body" style="font-size:1.0625rem;line-height:1.72;color:rgba(255,255,255,.38);">Start free, upgrade when you're ready. No lock-in, no fluff.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 items-stretch">
+      <!-- Free -->
+      <div class="reveal pricing-card glass-elevated rounded-2xl p-8 flex flex-col shadow-card">
+        <p class="font-body font-semibold mb-1" style="font-size:.8rem;color:rgba(255,255,255,.4);">Member</p>
+        <div class="flex items-baseline gap-1 mb-2">
+          <span class="font-display font-bold text-white" style="font-size:2.5rem;letter-spacing:-.04em;">Free</span>
+        </div>
+        <p class="font-body mb-7" style="font-size:.875rem;color:rgba(255,255,255,.32);">Get started with the community</p>
+        <ul class="flex flex-col gap-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Community forum access
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Public template library
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Monthly live events
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Member directory
+          </li>
+        </ul>
+        <a href="#" class="btn-outline" style="text-decoration:none;justify-content:center;">
+          Join Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Pro (featured) -->
+      <div class="reveal reveal-delay-1 pricing-card border-grad rounded-2xl p-8 flex flex-col shadow-teal-glow" style="position:relative;background:rgba(16,32,56,0.97);">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(130deg,#22D3EE,#3B82F6);color:#0B0D10;font-family:'Sora','Inter Tight',sans-serif;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.3rem .875rem;border-radius:999px;white-space:nowrap;">Most Popular</div>
+        <p class="font-body font-semibold mb-1" style="font-size:.8rem;color:rgba(255,255,255,.4);">Wave Pro</p>
+        <div class="flex items-baseline gap-1 mb-2">
+          <span class="font-display font-bold text-white" style="font-size:2.5rem;letter-spacing:-.04em;">$29</span>
+          <span class="font-body" style="font-size:.875rem;color:rgba(255,255,255,.32);">/mo</span>
+        </div>
+        <p class="font-body mb-7" style="font-size:.875rem;color:rgba(255,255,255,.32);">For serious automation builders</p>
+        <ul class="flex flex-col gap-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.58);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Everything in Member
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.58);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Private workshops &amp; recordings
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.58);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Premium template vault
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.58);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>1-on-1 office hours
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.58);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Exclusive Slack channels
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.58);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Early access to tools
+          </li>
+        </ul>
+        <a href="#" class="btn-primary" style="text-decoration:none;justify-content:center;">
+          Start Pro Trial <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Team -->
+      <div class="reveal reveal-delay-2 pricing-card glass-elevated rounded-2xl p-8 flex flex-col shadow-card">
+        <p class="font-body font-semibold mb-1" style="font-size:.8rem;color:rgba(255,255,255,.4);">Team</p>
+        <div class="flex items-baseline gap-1 mb-2">
+          <span class="font-display font-bold text-white" style="font-size:2.5rem;letter-spacing:-.04em;">$79</span>
+          <span class="font-body" style="font-size:.875rem;color:rgba(255,255,255,.32);">/mo</span>
+        </div>
+        <p class="font-body mb-7" style="font-size:.875rem;color:rgba(255,255,255,.32);">For companies building at scale</p>
+        <ul class="flex flex-col gap-3 mb-8 flex-1">
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Everything in Wave Pro
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Up to 5 seats
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Team workspace
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Priority support
+          </li>
+          <li class="flex items-start gap-2.5 font-body text-sm" style="color:rgba(255,255,255,.52);">
+            <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Custom onboarding
+          </li>
+        </ul>
+        <a href="#" class="btn-outline" style="text-decoration:none;justify-content:center;">
+          Contact Sales <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer style="border-top:1px solid rgba(34,211,238,.07);padding:4rem 0 2.5rem;position:relative;">
+  <div class="glow-blob" style="width:500px;height:200px;bottom:0;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(34,211,238,.05),transparent 70%);"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="#" class="flex items-center gap-2.5 mb-4" style="text-decoration:none;">
+          <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 3 L35 11 L35 27 L20 37 L5 27 L5 11 Z" fill="none" stroke="url(#sg2)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M20 9 L29 14 L29 24 L20 31 L11 24 L11 14 Z" fill="none" stroke="url(#sg2)" stroke-width="1.2" stroke-linejoin="round" opacity="0.45"/>
+            <path d="M4 22 Q11 13 20 20 Q29 27 36 17" stroke="url(#wg2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="sg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#67E8F9"/><stop offset="100%" stop-color="#22D3EE"/></linearGradient>
+              <linearGradient id="wg2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1a4a7a"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient>
+            </defs>
+          </svg>
+          <div style="line-height:1;">
+            <div class="font-display font-bold text-white" style="font-size:.85rem;">Premium <span class="text-grad-sm">TechNoir</span></div>
+            <div class="font-mono" style="font-size:.55rem;color:rgba(255,255,255,.22);letter-spacing:.15em;text-transform:uppercase;margin-top:1px;">AASW</div>
+          </div>
+        </a>
+        <p class="font-body" style="font-size:.825rem;line-height:1.65;color:rgba(255,255,255,.28);max-width:190px;">The premier community for AI automation practitioners worldwide.</p>
+      </div>
+      <!-- Links -->
+      <div>
+        <p class="font-mono mb-5" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);">Community</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">About Us</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Members</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Events</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono mb-5" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);">Resources</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Template Library</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Tutorials</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Blog</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Podcast</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono mb-5" style="font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);">Company</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Careers</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Partners</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Press</a></li>
+          <li><a href="#" class="footer-link font-body text-sm" style="text-decoration:none;">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4" style="padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);">
+      <p class="font-body" style="font-size:.75rem;color:rgba(255,255,255,.18);">&copy; 2026 Premium TechNoir · AI Automation Society Wave. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="footer-link font-body" style="font-size:.75rem;text-decoration:none;">Privacy</a>
+        <a href="#" class="footer-link font-body" style="font-size:.75rem;text-decoration:none;">Terms</a>
+        <a href="#" class="footer-link font-body" style="font-size:.75rem;text-decoration:none;">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════ SCRIPTS ══════════════════ -->
+<script>
+// ── Sparkle canvas ──────────────────────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('sparkle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function createParticle() {
+    return {
+      x: rand(0, W),
+      y: rand(0, H),
+      r: rand(0.4, 1.6),
+      alpha: rand(0.05, 0.9),
+      speed: rand(0.08, 0.35),
+      dir: Math.random() < 0.5 ? 1 : -1,
+      phase: rand(0, Math.PI * 2),
+      drift: rand(-0.15, 0.15),
+      vy: rand(-0.06, 0.06),
+    };
+  }
+
+  for (let i = 0; i < 90; i++) particles.push(createParticle());
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.012;
+    particles.forEach(p => {
+      p.alpha = 0.08 + 0.82 * (0.5 + 0.5 * Math.sin(t * p.speed * 1.8 + p.phase));
+      p.x += p.drift;
+      p.y += p.vy;
+      if (p.x < -4) p.x = W + 4;
+      if (p.x > W + 4) p.x = -4;
+      if (p.y < -4) p.y = H + 4;
+      if (p.y > H + 4) p.y = -4;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(34,211,238,${p.alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── Navbar scroll ───────────────────────────────────────────────────────────
+(function() {
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 48) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, { passive: true });
+})();
+
+// ── Mobile menu ─────────────────────────────────────────────────────────────
+(function() {
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+})();
+
+// ── Scroll-reveal (IntersectionObserver) ────────────────────────────────────
+(function() {
+  const selectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur';
+  const els = document.querySelectorAll(selectors);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  els.forEach(el => io.observe(el));
+  // Trigger hero elements immediately
+  document.querySelectorAll('#hero .reveal, #hero .reveal-blur').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 80);
+  });
+})();
+
+// ── 3D scroll card tilt ─────────────────────────────────────────────────────
+(function() {
+  const card = document.getElementById('scroll-card');
+  const wrap = document.getElementById('scroll-card-wrap');
+  if (!card || !wrap) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) card.classList.add('flat');
+      else card.classList.remove('flat');
+    });
+  }, { threshold: 0.3 });
+  io.observe(wrap);
+})();
+</script>
+
+</body>
+</html>
