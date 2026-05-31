@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
+import BrandHeader from "@/components/ui/BrandHeader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="bg-[#080e1a] text-white antialiased overflow-x-hidden">
-        {children}
+        <BrandHeader />
+        <main>{children}</main>
       </body>
     </html>
   );

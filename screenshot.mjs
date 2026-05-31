@@ -46,7 +46,8 @@ await new Promise((r) => setTimeout(r, 2500)); // wait for CDN fonts + Tailwind 
 await new Promise((r) => setTimeout(r, 1200));
 // Force all reveal elements visible (bypasses IntersectionObserver for screenshot)
 await page.evaluate(() => {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur')
+    .forEach(el => el.classList.add('visible'));
 });
 // Scroll to trigger any remaining JS
 const pageHeight = await page.evaluate(() => document.body.scrollHeight);
