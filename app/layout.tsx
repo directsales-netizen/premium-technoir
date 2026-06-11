@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "../styles/globals.css";
+import "./globals.css";
 import BrandHeader from "@/components/ui/BrandHeader";
+import MinimalChatBox from "@/components/MinimalChatBox";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className="bg-[#080e1a] text-white antialiased overflow-x-hidden">
         <BrandHeader />
         <main>{children}</main>
+        <MinimalChatBox />
       </body>
     </html>
   );

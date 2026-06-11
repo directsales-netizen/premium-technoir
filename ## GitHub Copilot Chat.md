@@ -1,0 +1,1 @@
+conect domain from github repo to vercel and assign adomain to www.premiumtechnoir.com

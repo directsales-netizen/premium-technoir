@@ -12,7 +12,10 @@
       "Bash(xxd \"/private/tmp/claude-501/-Users-c-miranda-Desktop-website/845c6b4b-a9e6-415f-b505-704da7a5136c/tasks/byppf0n0v.output\")",
       "Bash(gh auth *)",
       "Bash(git -C /Users/c.miranda/Desktop/website remote -v)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git push *)",
+      "Bash(cat /tmp/vercel-login.txt)",
+      "Read(//private/tmp/**)"
     ]
   }
 }

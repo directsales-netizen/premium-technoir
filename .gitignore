@@ -7,3 +7,4 @@ out/
 temporary screenshots/
 *.png
 .DS_Store
+.vercel
